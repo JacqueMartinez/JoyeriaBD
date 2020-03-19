@@ -5,17 +5,26 @@
  */
 package com.joyeria.vistas;
 
+import Vistas.V_Inventario;
 import com.joyeria.Dao.V_productoDao;
 import com.joyeria.Dao.V_ventaDao;
 import com.joyeria.controller.v_clientecontroller;
 import com.joyeria.controller.v_ventacontroller;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -491,8 +500,22 @@ public class V_ventas extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(v_controller.finalizar_venta(Integer.parseInt(txtno_venta.getText()), txtsubtotal.getText(), txttotal.getText(), txtdescuento.getText())){
             JOptionPane.showMessageDialog(null, "Se a finalizado correctamente");
-            this.setVisible(false);
+            this.setVisible(false);            
         }
+        JasperReport jr;
+        try {
+            jr = (JasperReport) JRLoader.loadObject(V_Inventario.class.getResource("/Reportes/Ventas.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, null,
+       DriverManager.getConnection("jdbc:mysql://localhost:3306/bdjoyeria","root",""));
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+        } catch (JRException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            Logger.getLogger(V_Inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
