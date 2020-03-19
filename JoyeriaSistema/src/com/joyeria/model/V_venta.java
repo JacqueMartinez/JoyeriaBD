@@ -31,6 +31,13 @@ public class V_venta {
         this.importe_total = importe_total;
     }
 
+    public V_venta(int id_cliente, int id_sucursal, int id_vendedor) {
+        this.id_cliente = id_cliente;
+        this.id_sucursal = id_sucursal;
+        this.id_vendedor = id_vendedor;
+    }
+    
+
     public V_venta(int id_venta, String descripcion, String descuento, String fecha_venta, int id_cliente, int id_sucursal, int id_vendedor, String importe_final, String importe_total) {
         this.id_venta = id_venta;
         this.descripcion = descripcion;

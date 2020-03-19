@@ -18,7 +18,7 @@ import com.joyeria.model.V_cliente;
 public class v_clientecontroller {
     V_clienteDao cdi= new V_clienteDao();
     
-    public void fillTableClienteFisico(JTable jtable,int id_sucursal){
+    public void fillclientes(JTable jtable,int id_sucursal){
         DefaultTableModel tModel = new DefaultTableModel();
         
         jtable.setModel(tModel);
@@ -42,7 +42,5 @@ public class v_clientecontroller {
             
             tModel.addRow(colums);
         }
-        
-        
     }
 }

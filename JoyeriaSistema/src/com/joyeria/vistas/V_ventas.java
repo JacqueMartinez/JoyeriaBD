@@ -5,7 +5,17 @@
  */
 package com.joyeria.vistas;
 
+import com.joyeria.Dao.V_productoDao;
+import com.joyeria.Dao.V_ventaDao;
+import com.joyeria.controller.v_clientecontroller;
+import com.joyeria.controller.v_ventacontroller;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,16 +26,67 @@ public class V_ventas extends javax.swing.JFrame {
     public static int nivel_usuario;
     public static int sucursal;
     public static int cliente;
+    public static int id_venta;
     public static String nombre_completo;
+   public int cantidad_piezas;
+   public double subtotal;
+   public double importe_total;
+   public double descuento;
+    public String seleccion;
+       v_ventacontroller v_controller = new v_ventacontroller();
+       V_ventaDao v_ventaDao = new V_ventaDao();
+       V_productoDao dao = new V_productoDao();
+    
+                       
     /**
      * Creates new form V_Ventas
      */
-    public V_ventas() {
+    public V_ventas() throws SQLException  {
         initComponents();
         this.setLocationRelativeTo(null);
-        tabla_Ventas.getTableHeader().setReorderingAllowed(false);
-        JOptionPane.showMessageDialog(null, nombre_completo);
+        jtbproductos.getTableHeader().setReorderingAllowed(false);
+         
+     
     }
+        public V_ventas(int id_venta) throws SQLException  {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        jtbproductos.getTableHeader().setReorderingAllowed(false);
+        datos_Venta();
+      
+    }
+    
+     public void datos_Venta() throws SQLException {
+        ResultSet rs = v_ventaDao.seleccionar_id(id_venta);
+        while (rs.next()) {
+            txtno_venta.setText(String.valueOf(rs.getInt(1)));
+            txtfecha.setText(String.valueOf(rs.getString(2)));
+            txtid_cliente.setText(String.valueOf(rs.getInt(4)));
+            txtnombre_cliente.setText(String.valueOf(rs.getString(5)));
+            
+        }
+    }
+      public void contar_piezas() {
+        cantidad_piezas = v_controller.contar_venta(id_venta);
+        txtpiezas.setText(String.valueOf(cantidad_piezas));
+    }
+
+       public void subtotal() {
+        subtotal = v_controller.subtotal(id_venta);
+        txtsubtotal.setText(String.valueOf(String.format("%.2f", subtotal)));
+    }
+        public void importe_total() {
+        importe_total = v_controller.seleccionar_importe(id_venta);
+        txttotal.setText(String.valueOf(String.format("%.2f", importe_total)));
+    }
+
+    public void descuento() {
+        descuento = v_controller.descuento(id_venta);
+        txtdescuento_total.setText(String.valueOf(String.format("%.2f", descuento)));
+        
+    }
+   
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,23 +97,24 @@ public class V_ventas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtid_cliente = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         txtnombre_cliente = new javax.swing.JTextField();
+        txt_id_producto = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_Ventas = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jtbproductos = new javax.swing.JTable();
+        txtproducto = new javax.swing.JTextField();
+        txtcantidad = new javax.swing.JTextField();
+        txtdescuento = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
+        txtsubtotal = new javax.swing.JLabel();
+        txtdescuento_total = new javax.swing.JLabel();
+        txttotal = new javax.swing.JLabel();
+        txtpiezas = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -60,13 +122,11 @@ public class V_ventas extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         txtfecha = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtno_venta = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -83,6 +143,7 @@ public class V_ventas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(txtid_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 690, 30, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/icons8-búsqueda-40.png"))); // NOI18N
         jButton2.setText("Buscar producto");
@@ -93,12 +154,13 @@ public class V_ventas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, 160, 40));
         getContentPane().add(txtnombre_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 270, 30));
+        getContentPane().add(txt_id_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 30, -1));
 
         jLabel42.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel42.setText("PRODUCTO");
         getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, 30));
 
-        tabla_Ventas.setModel(new javax.swing.table.DefaultTableModel(
+        jtbproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,22 +168,38 @@ public class V_ventas extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "", "", " "
             }
-        ));
-        jScrollPane1.setViewportView(tabla_Ventas);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtbproductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbproductosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtbproductos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 1060, 300));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtproductoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 250, 40));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 120, 30));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, 270, 30));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, 120, 30));
+        getContentPane().add(txtproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 250, 40));
+
+        txtcantidad.setText("1");
+        getContentPane().add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 120, 30));
+
+        txtdescuento.setText("0");
+        getContentPane().add(txtdescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, 120, 30));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/icons8-editar-40.png"))); // NOI18N
         jButton3.setText("Agregar");
@@ -158,18 +236,10 @@ public class V_ventas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 120, 140, 40));
-
-        jLabel43.setText("PIEZAS");
-        getContentPane().add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 570, -1, -1));
-
-        jLabel44.setText("PIEZAS");
-        getContentPane().add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 600, -1, -1));
-
-        jLabel45.setText("PIEZAS");
-        getContentPane().add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, -1, -1));
-
-        jLabel46.setText("10");
-        getContentPane().add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 540, -1, -1));
+        getContentPane().add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 570, -1, -1));
+        getContentPane().add(txtdescuento_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 600, -1, -1));
+        getContentPane().add(txttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, -1, -1));
+        getContentPane().add(txtpiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 540, -1, -1));
 
         jLabel31.setText("Cantidad");
         getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 630, -1, -1));
@@ -188,19 +258,12 @@ public class V_ventas extends javax.swing.JFrame {
 
         jLabel40.setText("PIEZAS");
         getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 540, -1, -1));
-
-        txtfecha.setText("05-marzo-2020");
-        getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
-
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/icons8-añadir-usuario-masculino-40.png"))); // NOI18N
-        getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 120, -1, -1));
+        getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 80, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel11.setText("VENTA");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 180, 50));
-
-        txtno_venta.setText("001");
-        getContentPane().add(txtno_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
+        getContentPane().add(txtno_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 20, 10));
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/icons8-encuentra-hombre-usuario-40.png"))); // NOI18N
         jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -215,9 +278,6 @@ public class V_ventas extends javax.swing.JFrame {
 
         jLabel26.setText("No. de venta");
         getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
-
-        jLabel36.setText("Nombre del Vendedor");
-        getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/inventario.png"))); // NOI18N
 
@@ -260,13 +320,15 @@ public class V_ventas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel16)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel19)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 598, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 608, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -278,8 +340,9 @@ public class V_ventas extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -293,7 +356,7 @@ public class V_ventas extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 110));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 110));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/fondo-vistas.png"))); // NOI18N
@@ -312,40 +375,188 @@ public class V_ventas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+       //ABRIR LA VISTA DE PRODUCTOS PARA ELEGIR UNO
+       
+        V_buscarproducto v_buscarproducto = null;
+        try {
+            v_buscarproducto = new V_buscarproducto(id_venta);
+        } catch (SQLException ex) {
+            Logger.getLogger(V_ventas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //v_buscarproducto.txtnombre_cliente.setText(txtnombre_cliente.getText());
+        v_buscarproducto.setVisible(true);
+      
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtproductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtproductoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        //if(txtno_venta.getText().equals("")){
+            //JOptionPane.showMessageDialog(null, "No se a iniciado la venta");  
+        //}else
+            //{
+            
+            
+            
+                
+             
+             jLabel23.setVisible(false);
+        
+             if(txtcantidad.getText().equals("") || txtproducto.getText().equals("")){
+                 JOptionPane.showMessageDialog(null, "Hay campos vacios");
+             }else{
+                    int cantidad = Integer.parseInt(txtcantidad.getText());
+                    String nombre = "";
+                    String descripcion ="";
+                    String peso_gramos="";
+                    String categoria ="";
+                    String precio_gramo="";
+                    String precio="";
+                    String stock="";
+                    ResultSet rs2;
+                    
+                    try {
+                        //OBTENER DATOS DEL PRODUCTO
+                        rs2 =dao .datos_producto(Integer.parseInt(txt_id_producto.getText()));
+                        while (rs2.next()) {
+                            nombre = rs2.getString(1);
+
+                            descripcion = rs2.getString(2);
+
+                            peso_gramos = rs2.getString(3);
+                        
+                            categoria = rs2.getString(4);
+                          
+                            precio_gramo = rs2.getString(5); 
+                           
+                           precio= rs2.getString(6);
+                           
+                           stock = rs2.getString(7);
+                           
+                        } 
+                       
+                          
+                        double precio_final;
+                        double descuento =(Double.parseDouble(precio)*  Double.parseDouble(txtdescuento.getText())/100);
+                        precio_final = (Double.parseDouble(precio)- descuento) * Integer.parseInt(txtcantidad.getText());
+                        v_ventaDao.insertarVentaProducto(Integer.parseInt(txt_id_producto.getText()),String.valueOf(cantidad) , String.valueOf(precio), String.valueOf(descuento), String.valueOf(precio_final), Integer.parseInt(txtno_venta.getText()));
+                        
+                        v_ventaDao.actualizar_stock(Integer.parseInt(txt_id_producto.getText()), Integer.parseInt(stock)-cantidad);
+                        contar_piezas();
+                        subtotal();
+                        descuento();
+                        importe_total();
+                       v_controller.fillProductos(jtbproductos, id_venta);
+
+                        
+                       
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+             }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        
+      if (seleccion == "") {
+            JOptionPane.showMessageDialog(null, "Seleccione un producto", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }else{
+             int confirm = JOptionPane.showConfirmDialog(null, "¿Confirma la eliminación?", "Eliminar producto", JOptionPane.YES_NO_OPTION);
+                System.out.println("Opcion: " + confirm);
+                if (confirm == 0) {
+                   v_controller.eliminar_producto(id_venta,Integer.parseInt(seleccion));
+                       //actualizar stock
+                        contar_piezas();
+                        subtotal();
+                        descuento();
+                        importe_total();
+                 try {
+                     v_controller.refillProductos(jtbproductos, id_venta);
+                 } catch (SQLException ex) {
+                     Logger.getLogger(V_ventas.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                   
+                }
+      }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        if(v_controller.finalizar_venta(Integer.parseInt(txtno_venta.getText()), txtsubtotal.getText(), txttotal.getText(), txtdescuento.getText())){
+            JOptionPane.showMessageDialog(null, "Se a finalizado correctamente");
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        //CUANDO EL CLIENTE ES PUBLICO EN GENERAL EL ID ES 1
+        if(txtnombre_cliente.getText().equals("")){
+             int confirm = JOptionPane.showConfirmDialog(null, "¿El cliente es publico en general?", "CLiente", JOptionPane.YES_NO_OPTION);
+        System.out.print("Opción: " + confirm);
+        if (confirm == 0) {
+             JOptionPane.showMessageDialog(null, v_controller.iniciar_venta(2,1 ,5));
+                 try {
+                     id_venta= v_controller.seleccionar_idVenta();
+                     System.err.println(id_venta);
+                     datos_Venta();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(V_ventas.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+             
+             
+        }else{
+            //AQUI SE ELIGE EL CLIENTE
+            JOptionPane.showMessageDialog(null, "es necesario seleccionar un cliente");
+        }
+        }else{
+              JOptionPane.showMessageDialog(null, v_controller.iniciar_venta(Integer.parseInt(txtid_cliente.getText()),1 ,5));
+               try {
+                     id_venta= v_controller.seleccionar_idVenta();
+                      System.err.println(id_venta);
+                      datos_Venta();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(V_ventas.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+        }
+       
+        
+    
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         // TODO add your handling code here:
         
-        V_buscarcliente buscarCliente = new V_buscarcliente();
+        V_buscarcliente buscarCliente = null;
+        try {
+            buscarCliente = new V_buscarcliente(id_venta);
+        } catch (SQLException ex) {
+            Logger.getLogger(V_ventas.class.getName()).log(Level.SEVERE, null, ex);
+        }
         buscarCliente.setVisible(true);
         this.setVisible(false);
+        
                
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jtbproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbproductosMouseClicked
+        // TODO add your handling code here:
+    
+      
+        seleccion= (String) jtbproductos.getValueAt(jtbproductos.getSelectedRow(),0).toString();
+        System.err.println(seleccion);
+    }//GEN-LAST:event_jtbproductosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -378,7 +589,11 @@ public class V_ventas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new V_ventas().setVisible(true);
+                try {
+                    new V_ventas().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(V_ventas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -400,11 +615,9 @@ public class V_ventas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -412,21 +625,22 @@ public class V_ventas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTable tabla_Ventas;
+    private javax.swing.JTable jtbproductos;
+    public static javax.swing.JTextField txt_id_producto;
+    public static javax.swing.JTextField txtcantidad;
+    private javax.swing.JTextField txtdescuento;
+    private javax.swing.JLabel txtdescuento_total;
     private javax.swing.JLabel txtfecha;
+    public static javax.swing.JTextField txtid_cliente;
     private javax.swing.JLabel txtno_venta;
     public static javax.swing.JTextField txtnombre_cliente;
+    private javax.swing.JLabel txtpiezas;
+    public static javax.swing.JTextField txtproducto;
+    private javax.swing.JLabel txtsubtotal;
+    private javax.swing.JLabel txttotal;
     // End of variables declaration//GEN-END:variables
 }

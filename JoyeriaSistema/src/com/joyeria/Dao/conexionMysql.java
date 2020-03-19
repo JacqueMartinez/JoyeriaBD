@@ -26,7 +26,7 @@ public class conexionMysql {
         try{
             conexion = DriverManager.getConnection(url, this.usuario, this.passw);
             status= true;
-            JOptionPane.showMessageDialog(null, status);
+            
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "eror"+ e.getMessage(),"error de conexiones",JOptionPane.ERROR_MESSAGE);

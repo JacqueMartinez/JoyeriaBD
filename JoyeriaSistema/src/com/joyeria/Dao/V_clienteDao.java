@@ -16,7 +16,7 @@ import java.sql.Connection;
  * @author jacQu
  */
 public class V_clienteDao {
-     conexionMysql con= new conexionMysql();
+    conexionMysql con= new conexionMysql();
     private Connection cn= con.Conectar();
     
     public ArrayList<V_cliente> obtenerClientes(int id_sucursal) {

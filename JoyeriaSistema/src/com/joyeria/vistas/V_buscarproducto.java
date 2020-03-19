@@ -5,8 +5,7 @@
  */
 package com.joyeria.vistas;
 
-import com.joyeria.controller.v_clientecontroller;
-import com.joyeria.vistas.V_ventas;
+import com.joyeria.controller.v_productocontroller;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,24 +13,25 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author dani_
+ * @author jacQu
  */
-public class V_buscarcliente extends javax.swing.JFrame {
-    v_clientecontroller cl = new v_clientecontroller();
-    V_ventas ventas;
-   
+public class V_buscarproducto extends javax.swing.JFrame {
+ v_productocontroller prod = new v_productocontroller();
+        V_ventas ventas;
+        String seleccion;
     /**
-     * Creates new form V_Clientes
+     * Creates new form V_buscarproducto
      */
-    public V_buscarcliente(int id_venta) throws SQLException {
-        this.ventas = new V_ventas(id_venta);
+    public V_buscarproducto(int id_venta) throws SQLException {
         initComponents();
-        tabla_clientes.getTableHeader().setReorderingAllowed(false);
-        cl.fillclientes(tabla_clientes, 1);
-         
+        this.ventas = new V_ventas(id_venta);
+           jtbProductos.getTableHeader().setReorderingAllowed(false);
+           prod.filltablaproductos(jtbProductos, 1);
+       
+       
     }
 
-    private V_buscarcliente() {
+    private V_buscarproducto() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -45,24 +45,15 @@ public class V_buscarcliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtbProductos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabla_clientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/icons8-marca-de-verificación-40.png"))); // NOI18N
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 140, 40));
-
-        tabla_clientes.setModel(new javax.swing.table.DefaultTableModel(
+        jtbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -73,41 +64,50 @@ public class V_buscarcliente extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tabla_clientes);
+        jtbProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbProductosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtbProductos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 600, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 660, 290));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("ACEPTAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 120, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/fondo-vistas.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 350));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         int fila = tabla_clientes.getSelectedRow();
-            if (fila < 0) {
-                JOptionPane.showMessageDialog(null, "Seleccione un cliente");
+        
+            if (seleccion.equals("")) {
+                JOptionPane.showMessageDialog(null, "Seleccione un producto");
             } else {
-                    int id = Integer.valueOf(tabla_clientes.getValueAt(fila, 0).toString());
-                    String nombre = tabla_clientes.getValueAt(fila, 1).toString().toUpperCase();
-                    String apellido_paterno = tabla_clientes.getValueAt(fila, 2).toString().toUpperCase();
-                    String apellido_materno = tabla_clientes.getValueAt(fila, 3).toString().toUpperCase();
-                    String nombre_completo = nombre + " " + apellido_paterno + " " + apellido_materno;
-                    ventas.txtnombre_cliente.setText(nombre + " " + apellido_paterno + " " + apellido_materno);
-                    ventas.nombre_completo = nombre_completo;
-                    ventas.txtid_cliente.setText(String.valueOf(id));
+                    //int id = Integer.valueOf(jtbProductos.getValueAt(fila, 0).toString());
+                    String nombre = jtbProductos.getValueAt(jtbProductos.getSelectedRow(),1).toString();
+                   ventas.txtproducto.setText(nombre);
+                    ventas.txt_id_producto.setText(String.valueOf(seleccion));
+                    ventas.txtcantidad.setText("1");
                     ventas.setVisible(true);
                     
-               
             }
              this.setVisible(false);
-             
-             ventas.txtnombre_cliente.setEnabled(false);
-           
-            
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtbProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbProductosMouseClicked
+        // TODO add your handling code here:
+        seleccion= (String) jtbProductos.getValueAt(jtbProductos.getSelectedRow(),0).toString();
+    }//GEN-LAST:event_jtbProductosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -126,23 +126,20 @@ public class V_buscarcliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(V_buscarcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(V_buscarproducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(V_buscarcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(V_buscarproducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(V_buscarcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(V_buscarproducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(V_buscarcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(V_buscarproducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new V_buscarcliente().setVisible(true);
+                new V_buscarproducto().setVisible(true);
             }
         });
     }
@@ -150,7 +147,7 @@ public class V_buscarcliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabla_clientes;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtbProductos;
     // End of variables declaration//GEN-END:variables
 }
