@@ -12,6 +12,7 @@ import java.net.URISyntaxException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -92,8 +93,10 @@ public class Controlador {
     public void guardarProducto(Producto pm){
         
         if(pm.getId()>0){
-          
+            int opcion = JOptionPane.showConfirmDialog(null, "¿REALMENTE DESEA MODIFICAR EL PRODUCTO?", null, JOptionPane.YES_NO_OPTION);
+        if (opcion == 0) {
             model.modificarProducto(pm);
+        }
         }
         else{
             model.guardarProducto(pm);

@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -215,27 +216,30 @@ public class V_Categoria extends javax.swing.JFrame {
            }
        }
        else{ 
-           try {
+            int opcion = JOptionPane.showConfirmDialog(null, "¿REALMENTE DESEA MODIFICAR LA CATEGORÍA?", null, JOptionPane.YES_NO_OPTION);
+        if (opcion == 0) {
+           try {    
                c.setId(Integer.parseInt(txtCatId.getText()));
                model.modificarCategoria(c);
                cont.cargarTabla(jtCat);
            } catch (SQLException ex) {
                Logger.getLogger(V_Categoria.class.getName()).log(Level.SEVERE, null, ex);
-           }
-        
+           } 
        }
        jtCat.getColumnModel().getColumn(0).setPreferredWidth(0);
-       
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(null, "¿REALMENTE DESEA ELIMINAR LA CATEGORÍA?", null, JOptionPane.YES_NO_OPTION);
+        if (opcion == 0) {
         cont.eliminarCat(jtCat.getValueAt(jtCat.getSelectedRow(),0).toString());
         try {
             cont.cargarTabla(jtCat);
         } catch (SQLException ex) {
             Logger.getLogger(V_Categoria.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

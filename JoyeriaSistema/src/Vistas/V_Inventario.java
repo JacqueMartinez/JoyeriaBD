@@ -385,11 +385,15 @@ public class V_Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+ int opcion = JOptionPane.showConfirmDialog(null, "¿REALMENTE DESEA ELIMINAR EL PRODUCTO?", null, JOptionPane.YES_NO_OPTION);
+        if (opcion == 0) {
         cont.eliminarProducto(jtProductos.getValueAt(jtProductos.getSelectedRow(),0).toString());
         try {
             cont.cargarTablaProductos(jtProductos);
         } catch (SQLException ex) {
             Logger.getLogger(V_Categoria.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
