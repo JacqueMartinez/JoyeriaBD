@@ -5,6 +5,8 @@
  */
 package joyeriasistema;
 
+import FelixView.Usuario;
+
 /**
  *
  * @author jacQu
@@ -15,7 +17,8 @@ public class JoyeriaSistema {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        FelixView.Usuario inicio = new Usuario();
+        inicio.setVisible(true);
     }
     
 }

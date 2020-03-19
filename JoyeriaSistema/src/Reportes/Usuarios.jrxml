@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="37c64346-c5fa-4c22-891a-2b39760a2908">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     vendedor.`id_vendedor` AS vendedor_id_vendedor,
+     vendedor.`nombre` AS vendedor_nombre,
+     vendedor.`apellido_paterno` AS vendedor_apellido_paterno,
+     vendedor.`apellido_materno` AS vendedor_apellido_materno,
+     vendedor.`direccion` AS vendedor_direccion,
+     vendedor.`telefono` AS vendedor_telefono,
+     vendedor.`estado` AS vendedor_estado,
+     vendedor.`nivel_usuario` AS vendedor_nivel_usuario,
+     vendedor.`id_sucursal` AS vendedor_id_sucursal,
+     vendedor.`id_horario` AS vendedor_id_horario,
+     vendedor.`fecha_ingreso` AS vendedor_fecha_ingreso,
+     vendedor.`detalles` AS vendedor_detalles
+FROM
+     `vendedor` vendedor]]>
+	</queryString>
+	<field name="vendedor_id_vendedor" class="java.lang.Integer"/>
+	<field name="vendedor_nombre" class="java.lang.String"/>
+	<field name="vendedor_apellido_paterno" class="java.lang.String"/>
+	<field name="vendedor_apellido_materno" class="java.lang.String"/>
+	<field name="vendedor_direccion" class="java.lang.String"/>
+	<field name="vendedor_telefono" class="java.lang.String"/>
+	<field name="vendedor_estado" class="java.lang.Integer"/>
+	<field name="vendedor_nivel_usuario" class="java.lang.Integer"/>
+	<field name="vendedor_id_sucursal" class="java.lang.Integer"/>
+	<field name="vendedor_id_horario" class="java.lang.Integer"/>
+	<field name="vendedor_fecha_ingreso" class="java.lang.String"/>
+	<field name="vendedor_detalles" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="164" y="0" width="469" height="62" uuid="489fb021-cbdb-4baf-9369-bc28fbb482dc"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Reporte de Ususarios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="b0ec7618-1743-462b-9ef3-8afc5d36a496"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Usuarios vigentes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="cbbd508c-8f25-4066-b443-d28d2dac8698"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="11" y="0" width="136" height="117" uuid="45d068cf-1d57-45ad-b9e7-c8b2c96cf78e"/>
+				<imageExpression><![CDATA["/Users/alejandroreyesbautista/NetBeansProjects/BDJoyeria/JoyeriaSistema/src/Reportes/coffee.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="646" y="19" width="136" height="117" uuid="01993885-7b4e-47df-876c-9d306ea87595"/>
+				<imageExpression><![CDATA["/Users/alejandroreyesbautista/NetBeansProjects/BDJoyeria/JoyeriaSistema/src/Reportes/coffee.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="f5bc5c99-9b62-4630-8739-475794bfe233"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="66" height="15" forecolor="#736343" uuid="e404a6bd-f9a4-42f4-a022-3b444e22e84b"/>
+				<text><![CDATA[Id Vendedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="66" y="0" width="66" height="15" forecolor="#736343" uuid="4d28e11b-9e6a-4c05-928f-cc085ea8a723"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="132" y="0" width="66" height="15" forecolor="#736343" uuid="d0706170-e171-4475-92b7-f141b2b8d34e"/>
+				<text><![CDATA[Apellido paterno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="198" y="0" width="66" height="15" forecolor="#736343" uuid="14b8adb1-a058-4534-9a90-e3decc241b05"/>
+				<text><![CDATA[Apellido materno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="0" width="66" height="15" forecolor="#736343" uuid="fb43e0d9-a908-4393-8838-9fd62daa00ca"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="330" y="0" width="66" height="15" forecolor="#736343" uuid="af9d55a7-fc3b-46cd-9b7d-90f04ae89c82"/>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="396" y="0" width="66" height="15" forecolor="#736343" uuid="eab233b4-22bb-4c53-9cb0-cb5d0b12505e"/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="462" y="0" width="66" height="15" forecolor="#736343" uuid="7f5583c2-bfb6-4c87-8355-114c7aff4a0c"/>
+				<text><![CDATA[Nivel_usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="528" y="0" width="66" height="15" forecolor="#736343" uuid="b09c4a97-8ee2-44e1-89f7-d424d4ed6c8a"/>
+				<text><![CDATA[Sucursal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="594" y="0" width="66" height="15" forecolor="#736343" uuid="a6d22ef7-9024-4f08-a7c0-d7577ce868e4"/>
+				<text><![CDATA[Horario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="660" y="0" width="66" height="15" forecolor="#736343" uuid="fdc5670e-0ab6-4387-943c-05c51711cde7"/>
+				<text><![CDATA[Fecha Ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="726" y="0" width="66" height="15" forecolor="#736343" uuid="cd1c180e-1dcf-4397-b89e-53fee58653ca"/>
+				<text><![CDATA[Detalles]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="1e2fed6d-63f9-4546-a7bd-11d626fa9b62"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="66" height="15" uuid="0eb7adea-1ad1-4a26-a6e0-c57550545e8a"/>
+					<textFieldExpression><![CDATA[$F{vendedor_id_vendedor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="66" y="0" width="66" height="15" uuid="15da51dc-6771-435a-a8eb-fe482aad4130"/>
+					<textFieldExpression><![CDATA[$F{vendedor_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="132" y="0" width="66" height="15" uuid="42369e8c-246a-4907-9054-047ad375e333"/>
+					<textFieldExpression><![CDATA[$F{vendedor_apellido_paterno}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="198" y="0" width="66" height="15" uuid="4d744f56-e6d8-4a0e-bbe9-7d01d6504b4d"/>
+					<textFieldExpression><![CDATA[$F{vendedor_apellido_materno}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="264" y="0" width="66" height="15" uuid="f5528a80-c2e7-4a1b-9365-ebdc1ef5c500"/>
+					<textFieldExpression><![CDATA[$F{vendedor_direccion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="330" y="0" width="66" height="15" uuid="0d0d8fbf-e1ed-452b-8d0a-b9c6820fc890"/>
+					<textFieldExpression><![CDATA[$F{vendedor_telefono}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="396" y="0" width="66" height="15" uuid="5e41587c-d3a8-4731-a355-40671ef2e605"/>
+					<textFieldExpression><![CDATA[$F{vendedor_estado}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="462" y="0" width="66" height="15" uuid="b4778c4c-5ee8-433d-9137-cb2366f00016"/>
+					<textFieldExpression><![CDATA[$F{vendedor_nivel_usuario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="528" y="0" width="66" height="15" uuid="b0d3f987-32db-4d16-9dee-34c5a06a5815"/>
+					<textFieldExpression><![CDATA[$F{vendedor_id_sucursal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="594" y="0" width="66" height="15" uuid="5abe04f4-f218-4ca3-81c5-4e610d5189ef"/>
+					<textFieldExpression><![CDATA[$F{vendedor_id_horario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="660" y="0" width="66" height="15" uuid="eacda470-e922-440d-9375-03e3c4c7423a"/>
+					<textFieldExpression><![CDATA[$F{vendedor_fecha_ingreso}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="726" y="0" width="66" height="15" uuid="8cf497ce-69e5-4e5e-8cad-0b5634395034"/>
+					<textFieldExpression><![CDATA[$F{vendedor_detalles}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="cc678b49-b182-495b-a13d-fbf11bec1614"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="e9b58852-7c37-4ff8-8297-912f0494d2cd"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="a13cbaa5-7582-4521-82c2-18064112f4a2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="1abc1eb4-8973-4f77-8aad-deac633fa777"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="e2d453b7-2dc9-49d7-bd4b-792f766cb7cb"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
