@@ -16,7 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
-/*import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -248,6 +248,11 @@ public class V_Inventario extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 110));
 
         jButton2.setText("Generar reporte");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 150, 40));
 
         jButton3.setText("Eliminar");
@@ -429,6 +434,21 @@ public class V_Inventario extends javax.swing.JFrame {
             Logger.getLogger(V_Inventario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txtFiltBuscKeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+ JasperReport jr;
+        try {
+            jr = (JasperReport) JRLoader.loadObject(V_Inventario.class.getResource("/Reportes/Productos.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, null,
+       DriverManager.getConnection("jdbc:mysql://localhost:3306/bdjoyeria","root",""));
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+        } catch (JRException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            Logger.getLogger(V_Inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }               // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
