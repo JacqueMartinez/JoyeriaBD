@@ -8,6 +8,11 @@ package EstherVistas.Clientes;
 import EstherControlador.Controlador;
 import EstherModelo.Conexion;
 import java.sql.Connection;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -47,7 +52,6 @@ public class V_Clientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAgregarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/agregaruser.png"))); // NOI18N
         btnAgregarC.setText("Agregar cliente");
         btnAgregarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,9 +60,8 @@ public class V_Clientes extends javax.swing.JFrame {
         });
         getContentPane().add(btnAgregarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 160, 60));
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 160, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 160, 60));
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,7 +83,6 @@ public class V_Clientes extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 950, 170));
 
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/edit.png"))); // NOI18N
         btnModificar.setText("Modificar");
         getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 150, 60));
 
@@ -91,33 +93,27 @@ public class V_Clientes extends javax.swing.JFrame {
         });
         getContentPane().add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 40));
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 140, 40));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sucursales.png"))); // NOI18N
         jButton1.setText("Sucursales");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 160, 80));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
         jButton2.setText("Ventas");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 160, 80));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png"))); // NOI18N
         jButton3.setText("Usuarios");
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 160, 80));
 
-        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png"))); // NOI18N
         btnReportes.setText("Reporte");
         btnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 80));
+        getContentPane().add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 160, 60));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo-vistas.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 1160, 840));
 
         pack();
@@ -135,14 +131,14 @@ public class V_Clientes extends javax.swing.JFrame {
         try {
             Conexion con= new Conexion();
         Connection conn=con.getConexion();
-        /*JasperReport reporte= null;
+            JasperReport reporte= null;
         String path="src\\Reportes\\clientes.jasper";
-        reporte= JRLoader.loadObjectFromFile(path);
-        JasperPrint jprint= JasperFillManager.fillReport(reporte, null, conn);
-        JasperViewer view = new JasperViewer(jprint, false);
+        reporte= (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint= JasperFillManager.fillReport(reporte, null, conn);
+            JasperViewer view = new JasperViewer(jprint, false);
         view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         view.setVisible(true);
-        */
+        
             
         } catch (Exception e) {
         }

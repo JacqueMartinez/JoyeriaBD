@@ -44,9 +44,9 @@ public class AgregarC extends javax.swing.JDialog {
         txtRfc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtCp = new javax.swing.JTextField();
-        btnCancelarC = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         lTexto = new javax.swing.JLabel();
+        btnCancelarC = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,16 +80,6 @@ public class AgregarC extends javax.swing.JDialog {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
         getContentPane().add(txtCp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 250, 30));
 
-        btnCancelarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/cancelar.png"))); // NOI18N
-        btnCancelarC.setText("Cancelar");
-        btnCancelarC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarCActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCancelarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 583, 120, 40));
-
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/aceptar.png"))); // NOI18N
         btnAgregar.setText("Aceptar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,19 +92,25 @@ public class AgregarC extends javax.swing.JDialog {
         lTexto.setText("Agregar Cliente");
         getContentPane().add(lTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo-vistas.png"))); // NOI18N
+        btnCancelarC.setText("Cancelar");
+        btnCancelarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarCActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCancelarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 580, 110, 40));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarCActionPerformed
-
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnCancelarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarCActionPerformed
 
     /**
      * @param args the command line arguments

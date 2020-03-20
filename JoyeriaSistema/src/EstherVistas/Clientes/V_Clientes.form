@@ -27,9 +27,6 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnAgregarC">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/joyeria/imagenes/agregaruser.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Agregar cliente"/>
       </Properties>
       <Events>
@@ -46,9 +43,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/joyeria/imagenes/eliminar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
       <AuxValues>
@@ -56,7 +50,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="450" width="160" height="-1"/>
+          <AbsoluteConstraints x="10" y="450" width="160" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -148,9 +142,6 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnModificar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/joyeria/imagenes/edit.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
       <AuxValues>
@@ -177,9 +168,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/joyeria/imagenes/buscar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <AuxValues>
@@ -193,9 +181,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/sucursales.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Sucursales"/>
       </Properties>
       <Constraints>
@@ -206,9 +191,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/ventas.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Ventas"/>
       </Properties>
       <Constraints>
@@ -219,9 +201,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/usuarios.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Usuarios"/>
       </Properties>
       <Constraints>
@@ -232,9 +211,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnReportes">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/reportes.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Reporte"/>
       </Properties>
       <Events>
@@ -242,7 +218,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="160" height="80"/>
+          <AbsoluteConstraints x="630" y="450" width="160" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -250,9 +226,6 @@
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/fondo-vistas.png"/>
         </Property>
       </Properties>
       <Constraints>

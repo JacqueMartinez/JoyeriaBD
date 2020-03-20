@@ -5,8 +5,10 @@
  */
 package EstherVistas;
 
+import EstherControlador.Controlador;
 import EstherModelo.Usuario;
 import java.util.List;
+import EstherVistas.Clientes.V_Clientes;
 
 
 /**
@@ -62,7 +64,6 @@ public class V_Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
@@ -78,9 +79,6 @@ public class V_Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Categoria:");
@@ -111,6 +109,11 @@ public class V_Inicio extends javax.swing.JFrame {
         getContentPane().add(btnSucursales, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 180, 90));
 
         btnClientes.setText("Clientes");
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 180, 90));
 
         btnUsuarios.setText("Usuarios");
@@ -129,6 +132,15 @@ public class V_Inicio extends javax.swing.JFrame {
         login l=new login();
         l.setVisible(true);
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        // TODO add your handling code here
+        V_Clientes v= new V_Clientes();
+        this.setVisible(false);
+        Controlador c= new Controlador(v);
+        v.setVisible(true);
+        v.setLocationRelativeTo(v);
+    }//GEN-LAST:event_btnClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,7 +189,6 @@ public class V_Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel nivel;
     private javax.swing.JLabel nombreUsuario;
     // End of variables declaration//GEN-END:variables
