@@ -6,13 +6,13 @@
 	<queryString>
 		<![CDATA[SELECT
      cliente.`nombre` AS cliente_nombre,
-     cliente.`apellidoPaterno` AS cliente_apellidoPaterno,
-     cliente.`apellidoMaterno` AS cliente_apellidoMaterno,
+     cliente.`apellido_paterno` AS cliente_apellidoPaterno,
+     cliente.`apellido_materno` AS cliente_apellidoMaterno,
      cliente.`direccion` AS cliente_direccion,
      cliente.`telefono` AS cliente_telefono,
      cliente.`rfc` AS cliente_rfc,
      cliente.`cp` AS cliente_cp,
-     cliente.`fechaIngreso` AS cliente_fechaIngreso,
+     cliente.`fecha_ingreso` AS cliente_fechaIngreso,
      sucursal.`direccion` AS sucursal_direccion,
      cliente.`id_cliente` AS cliente_id_cliente
 FROM
@@ -52,16 +52,8 @@ FROM
 	<columnHeader>
 		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="76" height="20" uuid="022bfb3e-ef34-4e50-9c7b-54de02d9a875"/>
-				<text><![CDATA[id]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="76" y="0" width="100" height="20" uuid="8f95eaed-30b7-4a50-a19c-ea775f7afef8"/>
 				<text><![CDATA[Nombre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="176" y="0" width="100" height="20" uuid="40e27f24-98c4-4ab0-ab2b-50c2402bcb88"/>
-				<text><![CDATA[Apellido Paterno]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="276" y="0" width="100" height="20" uuid="51164ae5-f1fe-4896-9bc2-76af76f8b51c"/>
@@ -75,21 +67,25 @@ FROM
 				<reportElement x="476" y="0" width="100" height="20" uuid="fe509298-1541-47b4-a23a-84a21478a00d"/>
 				<text><![CDATA[Sucursal]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="198" y="1" width="100" height="20" uuid="e82b6172-62d3-442b-9550-7b5b3b887609"/>
+				<textFieldExpression><![CDATA[$F{cliente_apellidoPaterno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="176" y="3" width="100" height="20" uuid="1ad97ac8-5820-4b6b-b1f5-a96c1ab45f2f"/>
+				<text><![CDATA[Apellido Paterno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="76" height="20" uuid="d3d21e4c-1d15-4dd8-93c4-d940de7aa431"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="76" height="20" uuid="f1af6977-5f8b-4c09-a46b-86e771e194a7"/>
-				<textFieldExpression><![CDATA[$F{cliente_id_cliente}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="76" y="0" width="100" height="20" uuid="6ad75ff3-248e-483f-b5e4-9e3539ab58f4"/>
 				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="176" y="0" width="100" height="20" uuid="558b7782-1929-480c-b13b-8dd9c2b59347"/>
-				<textFieldExpression><![CDATA[$F{cliente_apellidoPaterno}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="276" y="0" width="100" height="20" uuid="0c74198b-e5c9-4fc5-9732-f1e407d438c6"/>
@@ -102,6 +98,14 @@ FROM
 			<textField>
 				<reportElement x="476" y="0" width="100" height="20" uuid="580e838d-c6e8-4b60-898d-e5c78e47834b"/>
 				<textFieldExpression><![CDATA[$F{sucursal_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="1" width="100" height="20" uuid="6aa6961f-c006-49e0-aa48-b8eac6adc008"/>
+				<textFieldExpression><![CDATA[$F{cliente_apellidoPaterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="76" height="20" uuid="78e12232-c116-402c-8a0f-1cb3f30eead1"/>
+				<textFieldExpression><![CDATA[$F{cliente_id_cliente}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

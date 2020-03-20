@@ -98,34 +98,27 @@ public class V_Inicio extends javax.swing.JFrame {
         });
         getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 593, 130, 50));
 
-        btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         btnConfiguracion.setText("Configuración");
         getContentPane().add(btnConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 180, 90));
 
-        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
         btnVentas.setText("Ventas");
         getContentPane().add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 180, 90));
 
-        btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inventario.png"))); // NOI18N
         btnInventario.setText("Inventario");
         getContentPane().add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, 180, 90));
 
-        btnSucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sucursales.png"))); // NOI18N
         btnSucursales.setText("Sucursales");
         getContentPane().add(btnSucursales, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 180, 90));
 
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientes.png"))); // NOI18N
         btnClientes.setText("Clientes");
         getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 180, 90));
 
-        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png"))); // NOI18N
         btnUsuarios.setText("Usuarios");
         getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 180, 90));
         getContentPane().add(nivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
         getContentPane().add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo-vistas.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 1120, 729));
 
         pack();

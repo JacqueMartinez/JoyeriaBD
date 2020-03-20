@@ -48,7 +48,7 @@ public class ClientesDAO {
     
     
     public int agregarC(Clientes c){
-        String sql= "insert into cliente(nombre, apellidoPaterno, apellidoMaterno, direccion,telefono, rfc, cp, fechaIngreso, estado, id_sucursal) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql= "insert into cliente(nombre, apellido_paterno, apellido_materno, direccion,telefono, rfc, cp, fecha_ingreso, estado, id_sucursal) values(?,?,?,?,?,?,?,?,?,?)";
         try {
             con=conectar.getConexion();
             ps= con.prepareStatement(sql);
@@ -79,7 +79,7 @@ public class ClientesDAO {
     }
     
     public int modificar(Clientes c){
-        String sql="update cliente set nombre=?, apellidoPaterno=?, apellidoMaterno=?, direccion=?, telefono=?, rfc=?, cp=? where id_cliente=? ";
+        String sql="update cliente set nombre=?, apellido_paterno=?, apellido_materno=?, direccion=?, telefono=?, rfc=?, cp=? where id_cliente=? ";
         try {
             con=conectar.getConexion();
             ps=con.prepareStatement(sql);

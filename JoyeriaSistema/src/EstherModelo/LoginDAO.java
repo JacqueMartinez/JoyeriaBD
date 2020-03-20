@@ -27,7 +27,7 @@ public class LoginDAO {
         Connection con= null;
         
         public boolean loginA(Usuario usr){
-            String sql="SELECT u.id_administrador, u.nombre, u.apellidoPaterno, u.apellidoMaterno, u.nivel_usuario, u.contrasenia, t.nombreN FROM administrador as u INNER JOIN nivel_usuario AS t ON u.nivel_usuario=t.id_nivel  WHERE nombre=?";
+            String sql="SELECT u.id_administrador, u.nombre, u.apellido_paterno, u.apellido_materno, u.nivel_usuario, u.contrasenia, t.nombreN FROM administrador as u INNER JOIN nivel_usuario AS t ON u.nivel_usuario=t.id_nivel  WHERE nombre=?";
             try {
                 con=conectar.getConexion();
                 ps=con.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class LoginDAO {
         }
         
         public boolean loginG(Usuario usr){
-            String sql="SELECT u.id_gerente, u.nombre, u.apellidoPaterno, u.apellidoMaterno, u.nivel_usuario, u.contrasenia, t.nombreN FROM gerente as u INNER JOIN nivel_usuario AS t ON u.nivel_usuario=t.id_nivel  WHERE nombre=?";
+            String sql="SELECT u.id_gerente, u.nombre, u.apellido_paterno, u.apellido_materno, u.nivel_usuario, u.contrasenia, t.nombreN FROM gerente as u INNER JOIN nivel_usuario AS t ON u.nivel_usuario=t.id_nivel  WHERE nombre=?";
             try {
                 con=conectar.getConexion();
                 ps=con.prepareStatement(sql);
@@ -84,7 +84,7 @@ public class LoginDAO {
         
         
         public boolean loginV(Usuario usr){
-            String sql="SELECT u.id_vendedor, u.nombre, u.apellidoPaterno, u.apellidoMaterno, u.nivel_usuario, u.pass, t.nombreN FROM vendedor as u INNER JOIN nivel_usuario AS t ON u.nivel_usuario=t.id_nivel  WHERE nombre=?";
+            String sql="SELECT u.id_vendedor, u.nombre, u.apellido_paterno, u.apellido_materno, u.nivel_usuario, u.pass, t.nombreN FROM vendedor as u INNER JOIN nivel_usuario AS t ON u.nivel_usuario=t.id_nivel  WHERE nombre=?";
             try {
                 con=conectar.getConexion();
                 ps=con.prepareStatement(sql);
