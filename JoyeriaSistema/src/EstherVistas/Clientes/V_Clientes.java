@@ -134,8 +134,7 @@ public class V_Clientes extends javax.swing.JFrame {
         try {
             Conexion con= new Conexion();
         Connection conn=con.getConexion();
-        /*
-        JasperReport reporte= null;
+        /*JasperReport reporte= null;
         String path="src\\Reportes\\clientes.jasper";
         reporte= JRLoader.loadObjectFromFile(path);
         JasperPrint jprint= JasperFillManager.fillReport(reporte, null, conn);
