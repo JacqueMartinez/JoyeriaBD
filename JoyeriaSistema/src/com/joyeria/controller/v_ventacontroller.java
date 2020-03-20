@@ -53,12 +53,12 @@ public class v_ventacontroller {
     }
      public void fillProductos(JTable jtventa,int id_Venta) throws SQLException{
         jtventa.setModel(model);
-        model.addColumn("# ");
+        model.addColumn("CLAVE_PRODUCTO ");
         model.addColumn("CANTIDAD ");
         model.addColumn("NOMBRE");
-        model.addColumn("DESCUENTO");
-        model.addColumn("PRECIO ");
-        model.addColumn("PRECIO FINAL ");
+        model.addColumn("DESCUENTO C/U");
+        model.addColumn("PRECIO C/U");
+        model.addColumn("PRECIO FINAL C/U");
         
         
         Object[] columns = new Object[6];
@@ -66,49 +66,31 @@ public class v_ventacontroller {
           
           
           rs2 =dao.datos_productos(id_Venta);
-          ArrayList<String> lista = new ArrayList<>();
+          
                         while (rs2.next()) {
-                            lista = (ArrayList<String>) dao.datos_productos(id_Venta);
-                            //columns[0] = rs2.getString(1);
+                            
+                            columns[0] = rs2.getString(1);
 
-                           // columns[1]= rs2.getString(2);
+                           columns[1]= rs2.getString(2);
 
-                           //columns[2] = rs2.getString(3);
+                           columns[2] = rs2.getString(3);
                         
-                           // columns[3] = rs2.getString(4);
+                           columns[3] = rs2.getString(4);
                           
-                           //// columns[4] = rs2.getString(5); 
+                           columns[4] = rs2.getString(5); 
                            
-                            //columns[5] = rs2.getString(5); 
-                          //model.addRow(columns);
+                            columns[5] = rs2.getString(5); 
+                          model.addRow(columns);
                            
                         } 
         
-                        
+           
                     
       
-        int filas = lista.size();
-        
-        for (int i = 0; i < filas; i++) {
-            try {
-               columns[0] = rs2.getString(1);
-
-                           columns[1]= lista.get(1);
-
-                           //columns[2] = rs2.getString(3);
-                        
-                           // columns[3] = rs2.getString(4);
-                          
-                           //// columns[4] = rs2.getString(5); 
-                           
-                            //columns[5] = rs2.getString(5); 
-                model.addRow(columns);
-            } catch (SQLException ex) {
-                System.err.println("error" + ex);
-            }
+      
         }
         
-          }
+          
 
      public void refillProductos(JTable jtventa,int id_Venta) throws SQLException{
         jtventa.setModel(model);

@@ -164,11 +164,11 @@ public class V_ventaDao {
         PreparedStatement pst;
         ResultSet rs=null;
         try{
-            pst= cn.prepareStatement("SELECT vp.id_producto,vp.cantidad, (select p.nombre from producto WHERE vp.id_producto=p.id_producto),vp.descuento,vp.precio,vp.precio_final FROM venta_producto vp INNER JOIN producto p on p.id_producto= vp.id_producto WHERE id_venta=?");
+            pst= cn.prepareStatement("SELECT vp.id_producto,vp.cantidad, (select p.nombre from producto p WHERE vp.id_producto=p.id_producto),vp.descuento,vp.precio,vp.precio_final FROM venta_producto vp INNER JOIN producto p on p.id_producto= vp.id_producto WHERE id_venta=?");
             pst.setInt(1, venta);
             rs = pst.executeQuery();
         }catch(Exception e){
-            System.err.println("error"+ e);
+            //System.err.println("error"+ e);
         }
         return rs;
                }

@@ -6,7 +6,9 @@
 package joyeriasistema;
 
 import FelixView.Usuario;
-
+import com.joyeria.vistas.V_ventas;
+import java.sql.SQLException;
+import EstherVistas.login;
 /**
  *
  * @author jacQu
@@ -16,9 +18,15 @@ public class JoyeriaSistema {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        FelixView.Usuario inicio = new Usuario();
-        inicio.setVisible(true);
+    public static void main(String[] args) throws SQLException {
+       // FelixView.Usuario inicio = new Usuario();
+        //inicio.setVisible(true);
+        //V_ventas v= new V_ventas();
+        //v.setVisible(true);
+        
+        login log= new login();
+        log.setVisible(true);
+        
     }
     
 }

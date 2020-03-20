@@ -54,7 +54,8 @@ public class V_ventas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         jtbproductos.getTableHeader().setReorderingAllowed(false);
-         
+         txtid_cliente.setVisible(false);
+         txt_id_producto.setVisible(false);
      
     }
         public V_ventas(int id_venta) throws SQLException  {
@@ -62,6 +63,16 @@ public class V_ventas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jtbproductos.getTableHeader().setReorderingAllowed(false);
         datos_Venta();
+        txtid_cliente.setVisible(false);
+        txt_id_producto.setVisible(false);
+       if(txt_id_producto.getText().equals("")){
+           contar_piezas();
+           subtotal();
+           datos_Venta();
+           descuento();
+           importe_total();
+            v_controller.refillProductos(jtbproductos, id_venta);
+       }
       
     }
     
@@ -138,12 +149,10 @@ public class V_ventas extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -290,8 +299,6 @@ public class V_ventas extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/inventario.png"))); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/sucursales.png"))); // NOI18N
-
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/clientes.png"))); // NOI18N
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/usuarios.png"))); // NOI18N
@@ -301,8 +308,6 @@ public class V_ventas extends javax.swing.JFrame {
         jLabel10.setText("jLabel10");
 
         jLabel13.setText("PRODUCTOS");
-
-        jLabel15.setText("SUCURSALES");
 
         jLabel16.setText("CLIENTES");
 
@@ -317,27 +322,22 @@ public class V_ventas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(42, 42, 42)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(39, 39, 39)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel16)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 608, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel19)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 703, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -353,11 +353,9 @@ public class V_ventas extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
                     .addComponent(jLabel16)
                     .addComponent(jLabel19)
                     .addComponent(jLabel14)
@@ -461,19 +459,22 @@ public class V_ventas extends javax.swing.JFrame {
                         descuento();
                         importe_total();
                        v_controller.fillProductos(jtbproductos, id_venta);
+                       txtproducto.setText("");
+                       txtcantidad.setText("");
 
                         
                        
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
+                    txt_id_producto.setText("");
              }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+
       if (seleccion == "") {
             JOptionPane.showMessageDialog(null, "Seleccione un producto", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }else{
@@ -502,18 +503,18 @@ public class V_ventas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Se a finalizado correctamente");
             this.setVisible(false);            
         }
-        JasperReport jr;
-        try {
-            jr = (JasperReport) JRLoader.loadObject(V_Inventario.class.getResource("/Reportes/Ventas.jasper"));
-            JasperPrint jp = JasperFillManager.fillReport(jr, null,
-       DriverManager.getConnection("jdbc:mysql://localhost:3306/bdjoyeria","root",""));
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            jv.setVisible(true);
-        } catch (JRException | SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-            Logger.getLogger(V_Inventario.class.getName()).log(Level.SEVERE, null, ex);
-        }    
+       // JasperReport jr;
+        //try {
+         //   jr = (JasperReport) JRLoader.loadObject(V_Inventario.class.getResource("/Reportes/Ventas.jasper"));
+         //   JasperPrint jp = JasperFillManager.fillReport(jr, null,
+      // DriverManager.getConnection("jdbc:mysql://localhost:3306/bdjoyeria","root",""));
+        //    JasperViewer jv = new JasperViewer(jp, false);
+           // jv.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          //  jv.setVisible(true);
+       // } catch (JRException | SQLException ex) {
+          //  JOptionPane.showMessageDialog(null, ex);
+          //  Logger.getLogger(V_Inventario.class.getName()).log(Level.SEVERE, null, ex);
+        //}    
         
         
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -575,10 +576,10 @@ public class V_ventas extends javax.swing.JFrame {
 
     private void jtbproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbproductosMouseClicked
         // TODO add your handling code here:
-    
-      
-        seleccion= (String) jtbproductos.getValueAt(jtbproductos.getSelectedRow(),0).toString();
+           seleccion= (String) jtbproductos.getValueAt(jtbproductos.getSelectedRow(),0).toString();
         System.err.println(seleccion);
+      
+       
     }//GEN-LAST:event_jtbproductosMouseClicked
 
     /**
@@ -632,7 +633,6 @@ public class V_ventas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel23;
@@ -648,7 +648,6 @@ public class V_ventas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
