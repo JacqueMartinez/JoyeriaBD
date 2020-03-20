@@ -201,11 +201,10 @@ public class V_Categoria extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        Categoria c= new Categoria();
-       c.setNombre(txtCatDes.getText());
+       c.setNombre(txtCatNom.getText());
        c.setPeso(txtCatPes.getText());
        c.setPrecio(txtCatPre.getText());
        c.setDesc(txtCatDes.getText());
-       c.setEstado(1);
        
        if(txtCatId.getText()==null || "".equals(txtCatId.getText()) ){ 
            try {

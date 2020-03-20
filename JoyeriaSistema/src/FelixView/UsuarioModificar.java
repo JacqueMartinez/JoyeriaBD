@@ -377,6 +377,14 @@ public class UsuarioModificar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFechaIngKeyTyped
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        try {         
+            contr.llenarComboBoxH(cbxHorario);
+            contr.llenarComboBoxP(cbxPuesto);
+            contr.llenarComboBoxS(cbxSucursal);
+            txtIdU.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioAgregar.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
             txtIdU.setVisible(false);
             txtNombre.setText(um.getNombre());

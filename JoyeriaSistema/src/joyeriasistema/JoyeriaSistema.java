@@ -6,6 +6,11 @@
 package joyeriasistema;
 
 import FelixView.Usuario;
+import Vistas.V_Inventario;
+import com.joyeria.vistas.V_ventas;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,9 +21,13 @@ public class JoyeriaSistema {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        FelixView.Usuario inicio = new Usuario();
-        inicio.setVisible(true);
+    public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException, URISyntaxException {
+//        FelixView.Usuario inicio = new Usuario();
+//        inicio.setVisible(true);
+//       com.joyeria.vistas.V_ventas  ventas= new V_ventas();
+//       ventas.setVisible(true);
+        V_Inventario inv = new V_Inventario();
+        inv.setVisible(true);
     }
     
 }

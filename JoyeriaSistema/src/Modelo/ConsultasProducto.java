@@ -34,12 +34,12 @@ public class ConsultasProducto extends BD{
   
   public void modificarCategoria(Categoria c){
       this.modificar("categoria_producto", "nombre='"+c.getNombre()+"',descripcion='"+c.getDesc()
-              +"',precio='"+c.getPrecio()+"',peso_gramos='"+c.getPeso()+"'", "Id_categoria='"+c.getId()+"'");
+              +"',precio='"+c.getPrecio()+"',peso_gramos='"+c.getPeso()+"'", "id_categoria='"+c.getId()+"'");
   }
   
   public void modificarProducto(Producto p){
       this.modificar("producto", "nombre='"+p.getNombre()+"',descripcion='"+p.getDescripcion()
-              +"',categoria='"+p.getCategoria()+"',peso_gramos='"+p.getPeso()+"'", "id_producto='"+p.getId()+"'");
+              +"',categoria='"+p.getCategoria()+"',stock='"+p.getStock()+"',peso_gramos='"+p.getPeso()+"'", "id_producto='"+p.getId()+"'");
   }
   
   public ResultSet obtenerCategorias(){

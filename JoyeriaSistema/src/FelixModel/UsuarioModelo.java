@@ -19,6 +19,15 @@ public class UsuarioModelo {
     private int id_horario;
     private String detalles;
     private String fechaIngreso;
+    private String pass;
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
     public int getId_vendedor() {
         return id_vendedor;

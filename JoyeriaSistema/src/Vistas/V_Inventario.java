@@ -78,14 +78,18 @@ public class V_Inventario extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         txtFiltBusc = new javax.swing.JTextField();
         rbNom = new javax.swing.JRadioButton();
-        rbStock = new javax.swing.JRadioButton();
-        rbCat = new javax.swing.JRadioButton();
-        rbSuc = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
+            }
+        });
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -119,31 +123,18 @@ public class V_Inventario extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 1090, 200));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inventario.png"))); // NOI18N
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sucursales.png"))); // NOI18N
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientes.png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png"))); // NOI18N
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ofertas.png"))); // NOI18N
         jLabel7.setText("jLabel7");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png"))); // NOI18N
         jLabel8.setText("jLabel8");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         jLabel9.setText("jLabel9");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         jLabel10.setText("jLabel10");
 
         jLabel12.setText("VENTAS");
@@ -300,22 +291,12 @@ public class V_Inventario extends javax.swing.JFrame {
         grbFiltBusc.add(rbNom);
         rbNom.setText("Nombre");
         rbNom.setActionCommand("nombre");
-        getContentPane().add(rbNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
-
-        grbFiltBusc.add(rbStock);
-        rbStock.setText("Stock");
-        rbStock.setActionCommand("stock");
-        getContentPane().add(rbStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
-
-        grbFiltBusc.add(rbCat);
-        rbCat.setText("Categoría");
-        rbCat.setActionCommand("categoria");
-        getContentPane().add(rbCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
-
-        grbFiltBusc.add(rbSuc);
-        rbSuc.setText("Sucursal");
-        rbSuc.setActionCommand("id_sucursal");
-        getContentPane().add(rbSuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
+        rbNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNomActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -454,6 +435,18 @@ public class V_Inventario extends javax.swing.JFrame {
         }               // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void rbNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbNomActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        try {
+            cont.cargarTablaProductos(jtProductos);
+        } catch (SQLException ex) {
+            Logger.getLogger(V_Inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowGainedFocus
+
     /**
      * @param args the command line arguments
      */
@@ -534,10 +527,7 @@ public class V_Inventario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtProductos;
-    private javax.swing.JRadioButton rbCat;
     private javax.swing.JRadioButton rbNom;
-    private javax.swing.JRadioButton rbStock;
-    private javax.swing.JRadioButton rbSuc;
     private javax.swing.JTextField txtFiltBusc;
     // End of variables declaration//GEN-END:variables
 }

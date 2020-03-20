@@ -42,8 +42,7 @@ public class Controller {
     
     public void cargarTablaU(JTable jt) throws SQLException, ClassNotFoundException {
         DefaultTableModel modeloTable = new DefaultTableModel();
-        
-        jt.setModel(modeloTable);
+      
         modeloTable.addColumn("ID");
         modeloTable.addColumn("NOMBRE");
         modeloTable.addColumn("APELLIDO PATERNO");
@@ -74,6 +73,7 @@ public class Controller {
             registros[10] = rs.getString(11);
             modeloTable.addRow(registros);
         }  
+           jt.setModel(modeloTable);
     }
     
     public void cargarTablaH(JTable jt) throws SQLException, ClassNotFoundException {

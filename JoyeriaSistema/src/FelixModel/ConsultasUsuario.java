@@ -12,13 +12,13 @@ import java.sql.SQLException;
 public class ConsultasUsuario extends Conexion {
     
     public ResultSet obtenerU() throws ClassNotFoundException {
-        return this.consultarUsuarios("SELECT id_vendedor,  nombre, apellido_paterno, apellido_materno, direccion, telefono, nivel_usuario,id_sucursal, id_horario, fecha_ingreso, detalles FROM vendedor");
+        return this.consultarUsuarios("SELECT id_vendedor,  nombre, apellido_paterno, apellido_materno, direccion, telefono, nivel_usuario, id_sucursal, id_horario, fecha_ingreso, detalles FROM vendedor");
     }
 
     public boolean guardar(UsuarioModelo umodelo) {
         PreparedStatement ps = null;
         Connection con = getConexion();
-        String sql = "INSERT INTO vendedor( nombre, apellido_paterno, apellido_materno, direccion, telefono,nivel_usuario, id_sucursal, id_horario, fecha_ingreso, detalles, estado) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO vendedor( nombre, apellido_paterno, apellido_materno, direccion, telefono,nivel_usuario, id_sucursal, id_horario, fecha_ingreso, detalles, estado, pass) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
         try {
             ps = con.prepareStatement(sql);
             
@@ -34,6 +34,7 @@ public class ConsultasUsuario extends Conexion {
             ps.setString(9, umodelo.getFechaIngreso());
             ps.setString(10, umodelo.getDetalles());
             ps.setInt(11, 1);
+            ps.setString(12, umodelo.getPass());
 
             ps.execute();
             return true;
