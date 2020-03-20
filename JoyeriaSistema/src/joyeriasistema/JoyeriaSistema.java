@@ -29,14 +29,9 @@ public class JoyeriaSistema {
 //        inicio.setVisible(true);
 //       com.joyeria.vistas.V_ventas  ventas= new V_ventas();
 //       ventas.setVisible(true);
-        V_Inventario inv = new V_Inventario();
-        inv.setVisible(true);
-    public static void main(String[] args) throws SQLException {
-       // FelixView.Usuario inicio = new Usuario();
-        //inicio.setVisible(true);
-        //V_ventas v= new V_ventas();
-        //v.setVisible(true);
-        
+//       V_Inventario inv = new V_Inventario();
+//        inv.setVisible(true);
+
         login log= new login();
         log.setVisible(true);
         
