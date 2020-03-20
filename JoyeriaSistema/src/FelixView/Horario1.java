@@ -69,6 +69,7 @@ public class Horario1 extends javax.swing.JFrame {
             }
         });
 
+        btnGuardarH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/savemas.png"))); // NOI18N
         btnGuardarH.setText("Guardar");
         btnGuardarH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +83,7 @@ public class Horario1 extends javax.swing.JFrame {
 
         jLabel3.setText("Salida");
 
+        btnModificarH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/edit.png"))); // NOI18N
         btnModificarH.setText("Modificar");
         btnModificarH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +91,7 @@ public class Horario1 extends javax.swing.JFrame {
             }
         });
 
+        btnEliminarH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/eliminar.png"))); // NOI18N
         btnEliminarH.setText("Eliminar");
         btnEliminarH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +129,7 @@ public class Horario1 extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)

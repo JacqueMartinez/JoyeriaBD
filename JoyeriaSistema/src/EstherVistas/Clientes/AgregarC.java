@@ -80,14 +80,16 @@ public class AgregarC extends javax.swing.JDialog {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
         getContentPane().add(txtCp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 250, 30));
 
+        btnCancelarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/cancelar.png"))); // NOI18N
         btnCancelarC.setText("Cancelar");
         btnCancelarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarCActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 583, 110, 40));
+        getContentPane().add(btnCancelarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 583, 120, 40));
 
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/aceptar.png"))); // NOI18N
         btnAgregar.setText("Aceptar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
+import com.joyeria.vistas.V_ventas;
+import java.sql.SQLException;
+import EstherVistas.login;
 /**
  *
  * @author jacQu
@@ -28,6 +31,15 @@ public class JoyeriaSistema {
 //       ventas.setVisible(true);
         V_Inventario inv = new V_Inventario();
         inv.setVisible(true);
+    public static void main(String[] args) throws SQLException {
+       // FelixView.Usuario inicio = new Usuario();
+        //inicio.setVisible(true);
+        //V_ventas v= new V_ventas();
+        //v.setVisible(true);
+        
+        login log= new login();
+        log.setVisible(true);
+        
     }
     
 }

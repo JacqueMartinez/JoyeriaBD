@@ -26,6 +26,7 @@ public class V_buscarcliente extends javax.swing.JFrame {
     public V_buscarcliente(int id_venta) throws SQLException {
         this.ventas = new V_ventas(id_venta);
         initComponents();
+         setLocationRelativeTo(null);
         tabla_clientes.getTableHeader().setReorderingAllowed(false);
         cl.fillclientes(tabla_clientes, 1);
          
@@ -48,9 +49,11 @@ public class V_buscarcliente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_clientes = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/icons8-marca-de-verificación-40.png"))); // NOI18N
@@ -60,7 +63,7 @@ public class V_buscarcliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 140, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 150, 40));
 
         tabla_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,6 +79,15 @@ public class V_buscarcliente extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabla_clientes);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 600, 240));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/cancelar.png"))); // NOI18N
+        jButton2.setText("CANCELAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/fondo-vistas.png"))); // NOI18N
@@ -108,6 +120,18 @@ public class V_buscarcliente extends javax.swing.JFrame {
            
             
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+         // TODO add your handling code here:
+         V_ventas v_ventas = new V_ventas();
+         v_ventas.setVisible(true);
+         this.setVisible(false);
+     } catch (SQLException ex) {
+         Logger.getLogger(V_buscarproducto.class.getName()).log(Level.SEVERE, null, ex);
+     }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +173,7 @@ public class V_buscarcliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabla_clientes;

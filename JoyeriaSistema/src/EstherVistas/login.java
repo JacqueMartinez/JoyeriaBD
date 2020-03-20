@@ -34,7 +34,7 @@ public class login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        cbNivel = new javax.swing.JComboBox<String>();
+        cbNivel = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
@@ -56,7 +56,7 @@ public class login extends javax.swing.JFrame {
         });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 270, 40));
 
-        cbNivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Gerente", "Vendedor" }));
+        cbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Gerente", "Vendedor" }));
         cbNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbNivelActionPerformed(evt);
@@ -64,7 +64,7 @@ public class login extends javax.swing.JFrame {
         });
         getContentPane().add(cbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 270, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Estherimagenes/user.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 230, 300));
 
         btnEntrar.setText("Entrar");
@@ -76,7 +76,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 580, 110, 40));
         getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 510, 270, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Estherimagenes/fondo.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

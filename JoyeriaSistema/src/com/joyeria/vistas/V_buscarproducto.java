@@ -19,11 +19,13 @@ public class V_buscarproducto extends javax.swing.JFrame {
  v_productocontroller prod = new v_productocontroller();
         V_ventas ventas;
         String seleccion;
+        
     /**
      * Creates new form V_buscarproducto
      */
     public V_buscarproducto(int id_venta) throws SQLException {
         initComponents();
+         setLocationRelativeTo(null);
         this.ventas = new V_ventas(id_venta);
            jtbProductos.getTableHeader().setReorderingAllowed(false);
            prod.filltablaproductos(jtbProductos, 1);
@@ -48,6 +50,7 @@ public class V_buscarproducto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbProductos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,13 +76,23 @@ public class V_buscarproducto extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 660, 290));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/aceptar.png"))); // NOI18N
         jButton1.setText("ACEPTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 120, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 130, 30));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/cancelar.png"))); // NOI18N
+        jButton2.setText("CANCELAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/fondo-vistas.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 430));
@@ -108,6 +121,13 @@ public class V_buscarproducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         seleccion= (String) jtbProductos.getValueAt(jtbProductos.getSelectedRow(),0).toString();
     }//GEN-LAST:event_jtbProductosMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        ventas.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +166,7 @@ public class V_buscarproducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbProductos;

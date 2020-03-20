@@ -47,7 +47,7 @@ public class V_Clientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAgregarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar.png"))); // NOI18N
+        btnAgregarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/agregaruser.png"))); // NOI18N
         btnAgregarC.setText("Agregar cliente");
         btnAgregarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +56,7 @@ public class V_Clientes extends javax.swing.JFrame {
         });
         getContentPane().add(btnAgregarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 160, 60));
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 160, -1));
 
@@ -80,7 +80,7 @@ public class V_Clientes extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 950, 170));
 
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/edit.png"))); // NOI18N
         btnModificar.setText("Modificar");
         getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 150, 60));
 
@@ -91,6 +91,7 @@ public class V_Clientes extends javax.swing.JFrame {
         });
         getContentPane().add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 290, 40));
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 140, 40));
 

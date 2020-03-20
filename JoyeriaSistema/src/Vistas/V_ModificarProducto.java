@@ -88,6 +88,7 @@ public class V_ModificarProducto extends javax.swing.JFrame {
 
         jLabel7.setText("Nombre:");
 
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/savemas.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +96,7 @@ public class V_ModificarProducto extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/joyeria/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
 
         setVisible(false);
@@ -131,7 +133,7 @@ public class V_ModificarProducto extends javax.swing.JFrame {
                         .addComponent(btnGuardar)
                         .addGap(26, 26, 26)
                         .addComponent(btnCancelar)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +166,7 @@ public class V_ModificarProducto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxSuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
